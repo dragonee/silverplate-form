@@ -13,30 +13,29 @@ function form_text_summary($form, $item_separator="\r\n\r\n") {
     return $text;
 }
 
-class FormMailer {
-    public function send($form, $template) {
-        $summary = form_text_summary($form);
-       
-        // XXX: a little bit off
-        $app = new App;
+function send_form($form, $template) {
+    $summary = form_text_summary($form);
 
-        $contents = $app->renderHTML($template, array('summary' => $summary, 'form' => $form, 'mailer' => true));
+    // XXX: a little bit off
+    $app = new App;
 
-        $message = \Swift_Message::newInstance(get('subject'))
-            ->setFrom(get('from'))
-            ->setTo(get('to'))
-            ->setBody($contents);
-    
-        list($host, $port) = explode(':', get('via'));
+    $contents = $app->renderHTML($template, array('summary' => $summary, 'form' => $form, 'mailer' => true));
 
-        $transport = \Swift_SmtpTransport::newInstance($host, $port);
-        
-        $mailer = \Swift_Mailer::newInstance($transport);
-        
-        if(!$mailer->send($message)) {
-            return false;
-        }
+    $message = \Swift_Message::newInstance(get('subject'))
+        ->setFrom(get('from'))
+        ->setTo(get('to'))
+        ->setBody($contents);
 
-        return true;
+    list($host, $port) = explode(':', get('via'));
+
+    $transport = \Swift_SmtpTransport::newInstance($host, $port);
+
+    $mailer = \Swift_Mailer::newInstance($transport);
+
+    if(!$mailer->send($message)) {
+        return false;
     }
+
+    return true;
 }
+
