@@ -130,7 +130,6 @@ class Form implements IteratorAggregate {
             if($field->has() && !$field->check()) {
                 $errors = true;
             }
-            print_r($field);
         }
 
         return !$errors;
