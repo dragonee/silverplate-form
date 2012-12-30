@@ -75,7 +75,6 @@ class TextField extends Field {
     protected $type = 'text';
 }
 
-// initial
 class BooleanField extends Field {
     protected $type = 'checkbox';
 
@@ -89,6 +88,10 @@ class BooleanField extends Field {
 
     public function repr() {
         return $this->get() ? 'Tak': 'Nie';
+    }
+    
+    public function __toString() {
+        return sprintf('<input type="%s" name="%s" id="%s" value="1" %s>', $this->type, $this->key, $this->key, $this->get() ? 'checked' : '');
     }
 }
 
