@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Silverplate\\Form": "src/"
+            "Silverplate": "src/"
         }
     }
     "require": {
