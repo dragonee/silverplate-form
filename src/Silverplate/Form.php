@@ -1,4 +1,4 @@
-<?php namespace Silverplate\Form;
+<?php namespace Silverplate;
 
 class Field {
     protected
