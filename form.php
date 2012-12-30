@@ -1,4 +1,4 @@
-<?php
+<?php namespace Silverplate\Form;
 
 class Field {
     protected
@@ -132,7 +132,7 @@ class ChoiceField extends Field {
     }
 }
 
-class Form implements IteratorAggregate {
+class Form implements \IteratorAggregate {
     private 
         $fields = array();
 
@@ -141,7 +141,7 @@ class Form implements IteratorAggregate {
     }
 
     public function getIterator() {
-        return new ArrayIterator($this->fields);
+        return new \ArrayIterator($this->fields);
     }
 
     public function valid() {

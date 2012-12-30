@@ -1,4 +1,23 @@
 {
+    "name": "dragonee/silverplate-form",
+    "description": "Add a simple contact form to dragonee/silverplate.",
+    "version": "0.8.0",
+    "keywords": ["silverplate", "contact", "form"],
+    "homepage": "https://github.com/dragonee/silverplate-form",
+    "license": "BSD-4-Clause",
+    "authors": [
+        {
+            "name": "Michał Moroz",
+            "email": "michalmoroz@gmail.com",
+            "homepage": "http://michalmoroz.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Silverplate\\Form": "src/"
+        }
+    }
     "require": {
         "swiftmailer/swiftmailer": "4.*"
     }

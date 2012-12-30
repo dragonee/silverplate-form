@@ -1,41 +1,40 @@
-<?php
+<?php namespace Silverplate\Form;
 
-require_once 'vendor/swiftmailer/swiftmailer/lib/swift_required.php';
-
-function form_text_summary($form, $item_separator="\r\n\r\n") {
-    $text = '';
+class Mailer {
+    public static function form_text_summary($form, $item_separator="\r\n\r\n") {
+        $text = '';
     
-    foreach($form as $field) {
-        $text .= $field->label . ":" . $item_separator;
-        $text .= $field->get('[pozostawiono puste]') . $item_separator;
+        foreach($form as $field) {
+            $text .= $field->label . ":" . $item_separator;
+            $text .= $field->get(get('blank-field', '[field left blank]') . $item_separator;
+        }
+
+        return $text;
     }
 
-    return $text;
-}
+    public static function send_form($form, $template) {
+        $summary = form_text_summary($form);
 
-function send_form($form, $template) {
-    $summary = form_text_summary($form);
+        // XXX: a little bit off
+        $app = new \Silverplate\App;
 
-    // XXX: a little bit off
-    $app = new App;
+        $contents = $app->renderHTML($template, array('summary' => $summary, 'form' => $form, 'mailer' => true));
 
-    $contents = $app->renderHTML($template, array('summary' => $summary, 'form' => $form, 'mailer' => true));
+        $message = \Swift_Message::newInstance(get('subject'))
+            ->setFrom(get('from'))
+            ->setTo(get('to'))
+            ->setBody($contents);
 
-    $message = \Swift_Message::newInstance(get('subject'))
-        ->setFrom(get('from'))
-        ->setTo(get('to'))
-        ->setBody($contents);
+        list($host, $port) = explode(':', get('via'));
 
-    list($host, $port) = explode(':', get('via'));
+        $transport = \Swift_SmtpTransport::newInstance($host, $port);
 
-    $transport = \Swift_SmtpTransport::newInstance($host, $port);
+        $mailer = \Swift_Mailer::newInstance($transport);
 
-    $mailer = \Swift_Mailer::newInstance($transport);
+        if(!$mailer->send($message)) {
+            return false;
+        }
 
-    if(!$mailer->send($message)) {
-        return false;
+        return true;
     }
-
-    return true;
 }
-
