@@ -12,7 +12,7 @@ class BooleanField extends Field {
     }
 
     public function repr() {
-        return $this->get() ? 'Tak': 'Nie';
+        return $this->get() ? get('translation-yes', 'Yes'): get('translation-no', 'No');
     }
     
     public function __toString() {

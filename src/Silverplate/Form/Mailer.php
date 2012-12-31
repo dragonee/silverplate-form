@@ -6,7 +6,7 @@ class Mailer {
     
         foreach($form as $field) {
             $text .= $field->label . ":" . $item_separator;
-            $text .= $field->get(get('blank-field', '[field left blank]') . $item_separator;
+            $text .= $field->get(get('translation-field-empty', '[field left blank]') . $item_separator;
         }
 
         return $text;

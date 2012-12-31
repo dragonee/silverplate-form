@@ -23,7 +23,7 @@ class Form implements \IteratorAggregate {
 
         foreach($this as $field) {
             if($field->required() && !$field->has()) {
-                $field->error = get('required', 'This field is required.');
+                $field->error = get('translation-field-required', 'This field is required.');
                 $errors = true;
             }
 
