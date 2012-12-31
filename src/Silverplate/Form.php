@@ -12,6 +12,12 @@ class Form implements \IteratorAggregate {
         return new \ArrayIterator($this->fields);
     }
 
+    public function request($array) {
+        return new \ArrayIterator(array_filter($this->fields, function($field) use($array) {
+            return in_array($field, $array);
+       }));
+    }
+
     public function valid() {
         $errors = false;
 
