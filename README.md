@@ -35,8 +35,16 @@ at least three files.
 
 ### The form page
 
+See
+https://github.com/dragonee/silverplate-form/blob/master/examples/mail-form.php
+
 ### The e-mail template
 
+See
+https://github.com/dragonee/silverplate-form/blob/master/examples/mail-template.php
 ### The thank you page
+
+See
+https://github.com/dragonee/silverplate-form/blob/master/examples/thank-you.md
 
 <!-- vim: set tw=72: -->
