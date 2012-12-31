@@ -32,6 +32,10 @@ class Field {
         return $this;
     }
 
+    public function key() {
+        return $this->key;
+    }
+
     public function has() {
         return isset($_POST[$this->key]) && trim($_POST[$this->key]);
     }

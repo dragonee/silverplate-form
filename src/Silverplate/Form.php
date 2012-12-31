@@ -14,7 +14,7 @@ class Form implements \IteratorAggregate {
 
     public function request($array) {
         return new \ArrayIterator(array_filter($this->fields, function($field) use($array) {
-            return in_array($field, $array);
+            return in_array($field->key(), $array);
        }));
     }
 
