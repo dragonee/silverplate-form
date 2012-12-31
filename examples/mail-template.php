@@ -2,7 +2,7 @@
 
 // disable all external access
 if(!isset($mailer)) {
-    throw new Http404;
+    throw new \Silverplate\Http404;
 }
 
 // Set some information needed for mailer.

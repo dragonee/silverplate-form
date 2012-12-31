@@ -45,7 +45,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && $form->valid()) {
     Mailer::send_form($form, __DIR__ . '/mail-template.php');
 
     // Change this URL to match your domain
-    throw new Http302('http://mysite.com/thank-you');
+    throw new \Silverplate\Http302('http://mysite.com/thank-you');
 }
 
 /* 
