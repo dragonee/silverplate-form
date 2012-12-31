@@ -42,13 +42,15 @@ class Field {
 
     public function validate($func) {
         $this->validator = $func;
+
+        return $this;
     }
 
     public function check() {
         if($this->validator) {
             $this->error = call_user_func($this->validator, $this->get());
 
-            return (bool) $this->error;
+            return !$this->error;
         }
 
         return true;

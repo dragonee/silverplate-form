@@ -6,14 +6,14 @@ class Mailer {
     
         foreach($form as $field) {
             $text .= $field->label . ":" . $item_separator;
-            $text .= $field->get(get('translation-field-empty', '[field left blank]') . $item_separator;
+            $text .= $field->get(get('translation-field-empty', '[field left blank]')) . $item_separator;
         }
 
         return $text;
     }
 
     public static function send_form($form, $template) {
-        $summary = form_text_summary($form);
+        $summary = Mailer::form_text_summary($form);
 
         // XXX: a little bit off
         $app = new \Silverplate\App;
