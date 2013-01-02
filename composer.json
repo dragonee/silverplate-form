@@ -3,7 +3,7 @@
     "description": "Add a simple contact form to dragonee/silverplate.",
     "keywords": ["silverplate", "contact", "form"],
     "homepage": "https://github.com/dragonee/silverplate-form",
-    "license": "BSD-4-Clause",
+    "license": "MIT",
     "authors": [
         {
             "name": "Michał Moroz",
