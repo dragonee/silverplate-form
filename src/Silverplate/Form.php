@@ -5,7 +5,7 @@ class Form implements \IteratorAggregate {
         $fields = array();
 
     public function add($key, $field) {
-        $this->fields[] = $field->bind($key);
+        $this->fields[$key] = $field->bind($key);
     }
 
     public function getIterator() {
@@ -40,6 +40,14 @@ class Form implements \IteratorAggregate {
             return null;
         }
         
+        return $this->fields[$name]->get();
+    }
+
+    public function field($name) {
+        if(!isset($this->fields[$name])) {
+            return null;
+        }
+
         return $this->fields[$name];
     }
 }
