@@ -6,6 +6,7 @@ class Field {
         $key,
         $name,
         $type,
+        $classes,
         $validator;
 
     public 
@@ -72,8 +73,14 @@ class Field {
         return sprintf('<label for="%s">%s</label>', $this->key, $this->label);
     }
 
+    public function addClass($class) {
+        $this->classes .= " $class";
+
+        return $this;
+    }
+
     public function __toString() {
-        return sprintf('<input type="%s" name="%s" id="%s" value="%s">', $this->type, $this->key, $this->key, $this->get($this->initial));
+        return sprintf('<input type="%s" class="%s" name="%s" id="%s" value="%s">', $this->type, $this->classes, $this->key, $this->key, $this->get($this->initial));
     }
 }
 

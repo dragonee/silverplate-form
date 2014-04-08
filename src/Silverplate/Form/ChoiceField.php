@@ -27,7 +27,7 @@ class ChoiceField extends Field {
             $options .= sprintf('<option value="%s" %s>%s</option>', $value, $selected, $description);
         }
 
-        return sprintf('<select name="%s" id="%s">%s</select>', $this->key, $this->key, $options);
+        return sprintf('<select name="%s" id="%s" class="%s">%s</select>', $this->key, $this->key, $this->classes, $options);
     }
 }
 

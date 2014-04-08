@@ -16,7 +16,7 @@ class BooleanField extends Field {
     }
     
     public function __toString() {
-        return sprintf('<input type="%s" name="%s" id="%s" value="1" %s>', $this->type, $this->key, $this->key, $this->get() ? 'checked' : '');
+        return sprintf('<input type="%s" class="%s" name="%s" id="%s" value="1" %s>', $this->type, $this->classes, $this->key, $this->key, $this->get() ? 'checked' : '');
     }
 }
 
