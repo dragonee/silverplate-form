@@ -8,7 +8,11 @@ class BooleanField extends Field {
     }
 
     public function get($default=null) {
-        return isset($_POST[$this->key]);
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            return isset($_POST[$this->key]);
+        }
+
+        return $this->initial;
     }
 
     public function repr() {
@@ -16,7 +20,7 @@ class BooleanField extends Field {
     }
     
     public function __toString() {
-        return sprintf('<input type="%s" class="%s" name="%s" id="%s" value="1" %s>', $this->type, $this->classes, $this->key, $this->key, $this->get() ? 'checked' : '');
+        return sprintf('<input type="%s" class="%s" name="%s" id="%s" value="1" %s>', $this->type, $this->classes, $this->key, $this->key, $this->get($this->initial) ? 'checked' : '');
     }
 }
 
