@@ -16,7 +16,7 @@ class Database {
         $keys = array();
 
         foreach($form as $field) {
-            $keys[] = "`$field->key()`";
+            $keys[] = "`{$field->key()}`";
             $bindings[] = $field->get();
         }
 
