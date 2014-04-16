@@ -2,7 +2,7 @@
 
 class Database {
     public static function make($dsn, $username, $password, $options) {
-        $object = new static::(new \PDO($dsn, $username, $password, $options));
+        $object = new static(new \PDO($dsn, $username, $password, $options));
 
         return $object;
     }
